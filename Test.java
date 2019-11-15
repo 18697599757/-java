@@ -1,8 +1,21 @@
-public class Test {
+import java.util.Scanner;
 
-    public static void main(String args[]) {
-        String s = "www.runoob.com";
-        char result = s.charAt(9);
-        System.out.println(result);
+public class Test {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int h=in.nextInt();
+        int t=in.nextInt();
+        int m=in.nextInt();
+        int[]a=new int[m];
+        for(int i=0;i<m;i++){
+            a[i]=in.nextInt();
+        }
+        int k=0;
+        for(int j=0;j<m;j++){
+            if (a[j] > h && a[j]<h+t) {
+                k=k+1;
+            }
+        }
+        System.out.println(k);
     }
 }
