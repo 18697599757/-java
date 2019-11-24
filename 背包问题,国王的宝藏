@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class beibao {
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        for (int p = 0; p <n ; p++) {
+
+            int c = in.nextInt();
+            int m = in.nextInt();
+            int x = in.nextInt();
+            int[] v = new int[m];
+            int[] w = new int[m];
+
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < 1; j++) {
+                    w[i] = in.nextInt();
+                    v[i] = in.nextInt();
+                }
+            }
+            int value = 0;
+            int weight = 0;
+            int maxv = 0;
+
+            for (int i = 0; i <m ; i++) {
+                weight=w[i];
+                value=v[i];
+                if (maxv < value && weight <= c) {
+                    maxv = value;
+                }
+            }
+            for (int i = 0; i <m-1; i++) {
+                for (int j = i+1; j <m ; j++) {
+                    weight=w[i]+w[j];
+                    value=v[i]+v[j];
+                    if (maxv < value && weight <= c) {
+                        maxv = value;
+                    }
+
+                }
+                
+            }
+
+            for (int i = 0; i <m-2; i++) {
+                for (int j = i + 1; j < m-1; j++) {
+                    for (int k = j + 1; k < m; k++) {
+                        weight = w[i] + w[j] + w[k];
+                        value = v[i] + v[j] + v[k];
+                        if (maxv < value && weight <= c) {
+                            maxv = value;
+                        }
+                    }
+                }
+            }
+            System.out.println(maxv);
+        }
+
+    }
+}
