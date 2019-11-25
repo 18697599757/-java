@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt();
+        for (int i = 0; i <n ; i++) {
+            int c=in.nextInt();
+            int m=in.nextInt();
+            int x=in.nextInt();
+            int[] w=new int[m];
+            int[] v=new int[m];
+            for (int j = 0; j <m ; j++) {
+                w[j]=in.nextInt();
+                v[j]=in.nextInt();
+            }
+            
+
+
+            int[][] val=new int[m+1][c+1];
+            for (int j = 0; j <val.length ; j++) {
+                val[i][0]=0;
+            }
+            for (int j = 0; j <val[0].length ; j++) {
+                val[0][i]=0;
+            }
+
+
+            for (int j = 1; j <val.length ; j++) {
+                for (int k = 1; k <val[0].length ; k++) {
+                    if(w[j-1]>k){
+                        val[j][k]=val[j-1][k];
+                    }else {
+                        val[j][k]=Math.max(val[j-1][k],v[j-1]+val[j-1][k-w[j-1]]);
+                    }
+                }
+
+            }
+            int max=0;
+            for (int j = 0; j <val.length ; j++) {
+                for (int k = 0; k <val[j].length ; k++) {
+                    if(max<val[j][k]){
+                        max=val[j][k];
+                    }
+                }
+            }
+            System.out.println(max);
+        }
+
+    }
+}
